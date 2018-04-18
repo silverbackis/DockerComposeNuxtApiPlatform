@@ -1,0 +1,45 @@
+version: '3.6'
+
+services:
+    mysql:
+        image: mysql
+        volumes:
+            - db-mysql:/var/lib/mysql:rw
+        env_file:
+            - ./api/.env
+        environment:
+            MYSQL_RANDOM_ROOT_PASSWORD: "yes"
+
+    php:
+        build:
+            context: ./api
+            dockerfile: ./_docker/php/Dockerfile
+        depends_on:
+            - mysql
+        env_file:
+            - ./api/.env
+        restart: on-failure
+
+    nginx:
+        image: silverbackis/nginx:symfony4
+        depends_on:
+            - php
+
+    varnish:
+        image: silverbackis/varnish:symfony4
+        depends_on:
+            - nginx
+
+    app:
+        build:
+            context: ./app
+            dockerfile: ./_docker/Dockerfile
+        env_file:
+            - ./app/.env
+        volumes:
+            - ./app:/usr/src/app:rw
+            - /usr/src/app/node_modules
+            - /usr/src/app/build
+
+volumes:
+    db-mysql:

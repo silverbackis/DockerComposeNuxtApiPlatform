@@ -1,0 +1,44 @@
+version: '3.6'
+
+services:
+    varnish:
+        environment:
+            VIRTUAL_HOST: api.domain.com
+            LETSENCRYPT_HOST: api.domain.com
+            LETSENCRYPT_EMAIL: my@email.com
+            VIRTUAL_PORT: 80
+            # HTTPS_METHOD: noredirect
+        expose:
+            - 80
+        networks:
+            - default
+            - proxy
+
+    app:
+        environment:
+            VIRTUAL_HOST: domain.com
+            LETSENCRYPT_HOST: domain.com
+            LETSENCRYPT_EMAIL: my@email.com
+            VIRTUAL_PORT: 3000
+            # HTTPS_METHOD: noredirect
+        expose:
+            - 3000
+        networks:
+            - default
+            - proxy
+
+    php:
+        volumes:
+            - php-api:/srv/api/var/log:rw,cached
+
+    nginx:
+        volumes:
+            - php-api:/srv/api/public:ro
+
+networks:
+  proxy:
+    external:
+      name: proxy
+
+volumes:
+    php-api:
