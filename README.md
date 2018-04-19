@@ -48,5 +48,5 @@ make start
 make stop
 
 # Start in production wither with the environment variable ENV set to 'prod' or
-make start ENV=prod
+make start env=prod
 ```
