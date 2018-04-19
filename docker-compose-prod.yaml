@@ -36,9 +36,9 @@ services:
             - api-public:/srv/api/public:ro
 
 networks:
-  proxy:
-    external:
-      name: proxy
+    proxy:
+        external:
+            name: proxy
 
 volumes:
     api-public:
