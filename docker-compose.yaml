@@ -6,6 +6,7 @@ services:
         volumes:
             - db-mysql:/var/lib/mysql:rw
         env_file:
+            - ./shared/.env
             - ./api/.env
         environment:
             MYSQL_RANDOM_ROOT_PASSWORD: "yes"
@@ -17,6 +18,7 @@ services:
         depends_on:
             - mysql
         env_file:
+            - ./shared/.env
             - ./api/.env
         restart: on-failure
 
@@ -35,6 +37,7 @@ services:
             context: ./app
             dockerfile: ./_docker/Dockerfile
         env_file:
+            - ./shared/.env
             - ./app/.env
         volumes:
             - ./app:/usr/src/app:rw
