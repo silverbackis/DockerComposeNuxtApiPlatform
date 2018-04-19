@@ -40,7 +40,8 @@
     "scripts": {
         "auto-scripts": {
             "cache:clear": "symfony-cmd",
-            "assets:install": "symfony-cmd"
+            "assets:install": "symfony-cmd",
+            "assets:install --symlink --relative %PUBLIC_DIR%": "symfony-cmd"
         },
         "post-install-cmd": [
             "@auto-scripts"
@@ -54,7 +55,7 @@
     },
     "extra": {
         "symfony": {
-            "id": "",
+            "id": "01CBF4RWS6RTE8C2HXQEE4SXDR",
             "allow-contrib": false
         }
     }

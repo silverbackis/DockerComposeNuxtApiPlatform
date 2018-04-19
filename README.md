@@ -4,6 +4,7 @@
 This package is a skeleton for Web Applications with API Platform / Symfony / PHP back-end and a Node Front-End (VueJS, React, Angular).
 
 ## Installation
+### Basic
 ```bash
 make env
 ```
@@ -13,6 +14,14 @@ Then modify
 
 _The `app/.env` file is automatically created by Symfony Flex when you run the application for the first time. So run the application, adjust the file and then restart. If a `api/.env.dist` file exists, it will be copied to `/api/.env` when the above command is run._
 
+Initialise the API - This will run and then stop and remove the container when you press another key. When the container starts, your composer packages are installed and this happens after your local volume is mounted. There will be an error in the logs because when started, the .env file has none of the required variables. Next time you run the php container it will be using the populated .env file.
+```bash
+make php
+```
+
+Now edit `api/.env`. Once complete you are ready to run your application
+
+### Advanced
 If you use other packages in your Symfony API that need to write to the volume, you should edit `api/_docker/php/Dockerfile` and `api/_docker/php/docker-entrypoint.sh` so that the directories are created during builds and permissions adjusted properly.
 
 By default:

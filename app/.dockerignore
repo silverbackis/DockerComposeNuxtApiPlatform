@@ -1,0 +1,9 @@
+**/.DS_Store
+**/.gitignore
+**/.gitattributes
+**/Thumbs.db
+**/*.md
+**/.dockerignore
+**/Dockerfile
+.env*
+node_modules
