@@ -30,7 +30,6 @@ services:
 
     nginx:
         image: silverbackis/nginx:symfony4
-        container_name: nginx
         depends_on:
             - php
         env_file:

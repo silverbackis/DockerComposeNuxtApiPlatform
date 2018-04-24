@@ -17,6 +17,9 @@ RUN chown -R www-data var
 
 RUN composer dump-autoload --classmap-authoritative --no-dev
 
+# Uncomment if you have yarn / npm dependencies
+#RUN yarn install
+
 COPY _docker/php/docker-entrypoint.sh /usr/local/bin/docker-entrypoint
 RUN chmod +x /usr/local/bin/docker-entrypoint
 ENTRYPOINT ["docker-entrypoint"]
