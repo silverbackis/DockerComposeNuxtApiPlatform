@@ -9,6 +9,7 @@ This package is a skeleton for Web Applications with API Platform / Symfony / PH
 make env
 ```
 Then modify
+- `.env`
 - `shared/.env`
 - `app/.env`
 
