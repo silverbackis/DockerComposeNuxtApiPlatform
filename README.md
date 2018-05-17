@@ -17,7 +17,7 @@ _The `app/.env` file is automatically created by Symfony Flex when you run the a
 
 Initialise the API - This will run and then stop and remove the container when you press another key. When the container starts, your composer packages are installed and this happens after your local volume is mounted. There will be an error in the logs because when started, the .env file has none of the required variables. Next time you run the php container it will be using the populated .env file.
 ```bash
-make php
+make api
 ```
 
 Now edit `api/.env`. Once complete you are ready to run your application
@@ -51,3 +51,6 @@ make stop
 # Start in production wither with the environment variable ENV set to 'prod' or
 make start env=prod
 ```
+
+## Using different composer dependencies
+Simply alter your dependencies in `composer.json` before running `make api`
