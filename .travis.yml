@@ -9,7 +9,7 @@ jobs:
   include:
     - stage: copy env files
       script:
-      - make env
+      - make env env=test
 
     - stage: create api files
       script:

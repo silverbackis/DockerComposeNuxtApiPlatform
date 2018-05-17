@@ -1,3 +1,5 @@
+env=$1
+
 ask() {
     # https://djm.me/ask
     local prompt default reply
@@ -35,7 +37,7 @@ ask() {
     done
 }
 
-if ask "This will overwrite any existing .env files. Are you sure you want to continue"; then
+if [env -eq 'test'] || [ask "This will overwrite any existing .env files. Are you sure you want to continue"]; then
   cp ./shared/.env.dist ./shared/.env 2>/dev/null
   cp ./app/.env.dist ./app/.env 2>/dev/null
   cp ./api/.env.dist ./api/.env 2>/dev/null
