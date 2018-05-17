@@ -2,8 +2,7 @@ CURRENT_DIRECTORY:=$(shell pwd)
 env?=dev
 
 env:
-	SCRIPT:= ./bin/copy-env.sh
-	FUNCTION:=$(shell $(SCRIPT) $(env))
+	./bin/copy-env.sh $(env)
 
 api:
 	# this would definitely be better to read the stdout of the docker compose script and kill when we see that composer is done running but I am not sure how to do this
