@@ -17,8 +17,7 @@ if [ "$1" = 'php-fpm' ] || [ "$1" = 'bin/console' ]; then
 	  # Check bin/console is executable now because the file should definitely exist
     chmod +x bin/console
 
-		# Uncomment the following lines if you are using Symfony Encore\
-		# yarn install
+		# Uncomment the following line if you are using Symfony Encore
 		#yarn run watch
   else
     composer run-script --no-dev post-install-cmd

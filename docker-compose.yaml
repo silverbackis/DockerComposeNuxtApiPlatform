@@ -13,7 +13,7 @@ services:
             - api
             - app
 
-    php:
+    api:
         build:
             context: ./api
             dockerfile: ./_docker/php/Dockerfile
@@ -44,6 +44,8 @@ services:
             - php
         networks:
             - api
+            - app
+            - proxy
 
     app:
         build:
@@ -58,6 +60,7 @@ services:
             - /usr/src/app/build
         networks:
             - app
+            - proxy
 
 volumes:
     db-mysql:
@@ -65,3 +68,6 @@ volumes:
 networks:
     app:
     api:
+    proxy:
+        external:
+            name: proxy

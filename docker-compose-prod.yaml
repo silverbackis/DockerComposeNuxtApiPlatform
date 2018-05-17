@@ -10,8 +10,6 @@ services:
             LETSENCRYPT_EMAIL: ${LETSENCRYPT_EMAIL}
         expose:
             - 80
-        networks:
-            - proxy
 
     app:
         environment:
@@ -22,21 +20,16 @@ services:
             LETSENCRYPT_EMAIL: ${LETSENCRYPT_EMAIL}
         expose:
             - 3000
-        networks:
-            - proxy
 
-    php:
+    api:
         volumes:
             - api-public:/srv/api/public:rw,cached
+            # Had an issue where a config file wasn't removed after a composer update - may have been another issue with git fetch in prod
+            # - ./api/config:/srv/api/config:rw,cached
 
     nginx:
         volumes:
             - api-public:/srv/api/public:ro
-
-networks:
-    proxy:
-        external:
-            name: proxy
 
 volumes:
     api-public:

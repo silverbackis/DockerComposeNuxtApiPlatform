@@ -5,7 +5,7 @@ services:
         ports:
             - "4306:3306"
 
-    php:
+    api:
         volumes:
             - ./api:/srv/api:rw,cached
             # If you develop on Linux, uncomment the following line to use a bind-mounted host directory instead
@@ -22,5 +22,8 @@ services:
             - "8081:80"
 
     app:
+        expose:
+            - "8888"
         ports:
             - "80:3000"
+            - "8888:8888"
