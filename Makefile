@@ -5,8 +5,9 @@ env:
 	./bin/copy-env.sh
 
 api:
+	# this would definitely be better to read the stdout of the docker compose script and kill when we see that composer is done running but I am not sure how to do this
 	@docker-compose -f ./docker-compose.yaml -f ./docker-compose-$(env).yaml up -d php
-	read -r -p "Press any key when you can see all your files in your project's ./api firectory (composer install command running)" input
+	read -t 120 -r -p "Wait until you can see all your files in your project's ./api firectory (composer install command running) - waiting 120 secs or press any key" input
 	make stop
 
 build:

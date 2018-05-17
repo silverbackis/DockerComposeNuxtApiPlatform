@@ -1,0 +1,28 @@
+sudo: required
+
+dist: trusty
+
+services:
+  - docker
+
+jobs:
+  include:
+    - stage: copy env files
+      script:
+      - make env
+
+    - stage: create api files
+      script:
+      - make api
+
+    - stage: start in development
+      script:
+      - make start
+
+    - stage: stop docker services
+      script:
+      - make stop
+
+    - stage: start in production
+      script:
+      - make start env=prod
