@@ -11,7 +11,7 @@ api:
 
 update:
 	docker-compose exec api php -d memory_limit=-1 /usr/bin/composer update
-	docker-compose exec api yarn upgrade
+	docker-compose exec app yarn upgrade
 	make pull
 
 pull:
