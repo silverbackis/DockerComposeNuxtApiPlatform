@@ -16,7 +16,7 @@ update:
 
 pull:
 	@docker-compose -f ./docker-compose.yaml -f ./docker-compose-$(env).yaml pull
-	@docker-compose -f ./docker-compose.yaml -f ./docker-compose-$(env).yaml build --pull
+	@docker-compose -f ./docker-compose.yaml -f ./docker-compose-$(env).yaml build --no-cache --pull
 
 start:
 	@docker-compose -f ./docker-compose.yaml -f ./docker-compose-$(env).yaml up -d --force-recreate
