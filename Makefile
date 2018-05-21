@@ -10,8 +10,8 @@ api:
 	make stop
 
 update:
-	docker-compose exec api php -d memory_limit=-1 /usr/bin/composer update
-	docker-compose exec app yarn upgrade
+	@docker-compose exec api php -d memory_limit=-1 /usr/bin/composer update
+	@docker-compose exec app yarn upgrade
 	make pull
 
 pull:
@@ -24,4 +24,8 @@ start:
 stop:
 	@docker-compose down
 
-.PHONY: env api update pull start stop
+restart:
+	make stop
+	make start env=$(env)
+
+.PHONY: env api update pull start stop restart
